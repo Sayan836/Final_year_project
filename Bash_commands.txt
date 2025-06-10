@@ -1,0 +1,7 @@
+mkdir '/content/Final_year_project/DeOldify/models'
+wget https://data.deepai.org/deoldify/ColorizeVideo_gen.pth -O ./Final_year_project/DeOldify/modelsColorizeVideo_gen.pth
+
+!export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
+mkdir ./Final_year_project/arXiv2020-RIFE/train_log
+cd ./Final_year_project/arXiv2020-RIFE/train_log
