@@ -96,7 +96,7 @@ async def process_data(
                                                             output_video_path=compressed_file)
                 output_file = os.path.join(BASE_DIR, UPLOAD_DIR, f"bw_{file_name}")
                 print("Generating output video")
-                out_bw_video_path = await video_to_bw(brightness=brightness,
+                out_bw_video_path = await deoldify_video(brightness=brightness,
                                                     sharpness=sharpness,
                                                     contrast=contrast,
                                                     input_video_path=compressed_video_path,
