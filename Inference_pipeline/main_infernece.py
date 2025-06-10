@@ -63,5 +63,6 @@ def restore_video_pipeline(input_video_path, rife_model_dir='train_log', exp=2, 
 
     return final_output_path
 
-final_video = restore_video_pipeline("/path/to/input_video.mp4")
-print("Final processed video at:", final_video)
+if __name__ == "__main__":
+    final_video = restore_video_pipeline("/path/to/input_video.mp4")
+    print("Final processed video at:", final_video)
