@@ -21,7 +21,7 @@ from get_ESRGAN import *
 
 load_dotenv()
 download_rife_model()
-download_esrgan_model()
+esrgan_model=download_esrgan_model()
 
 
 def restore_video_pipeline(input_video_path, rife_model_dir='train_log', exp=2, scale=1.0, fp16=True):
@@ -41,14 +41,15 @@ def restore_video_pipeline(input_video_path, rife_model_dir='train_log', exp=2, 
     # Step 1: Colorize using DeOldify
     print("[1/3] Colorizing video...")
     colorizer = get_video_colorizer()
-    colorized_path = colorizer.colorize_from_file_name(input_video_path)
+    output_path = Path(input_video_path).stem + "_colorized.mp4"
+    colorized_path = colorizer.colorize_from_file_name(input_video_path,output_path=output_path, render_factor=35, results_dir='colorized_videos')
     print(f"Colorized video saved at: {colorized_path}")
 
     # Step 2: Interpolate using RIFE
     print("[2/3] Interpolating video frames...")
     interpolated_path = interpolate_video(
         video_path=colorized_path,
-        output_path=colorized_path,
+        output_path=Path(colorized_path).stem + "_interpolated.mp4",
         model_dir=rife_model_dir,
         exp=exp,
         scale=scale,
@@ -58,7 +59,8 @@ def restore_video_pipeline(input_video_path, rife_model_dir='train_log', exp=2, 
 
     # Step 3: Upscale using ESRGAN
     print("[3/3] Upscaling video resolution...")
-    final_output_path = upscale_video(interpolated_path)
+    output_path= Path(interpolated_path).stem + "_upscaled.mp4"
+    final_output_path = upscale_video(interpolated_path, output_path, esrgan_model, scale=4, tile=0, gpu_id=0)
     print(f"Upscaled video saved at: {final_output_path}")
 
     return final_output_path
