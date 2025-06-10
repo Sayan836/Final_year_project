@@ -1,0 +1,46 @@
+{
+  "hash": "e112193a",
+  "configHash": "513d5330",
+  "lockfileHash": "7626e63a",
+  "browserHash": "58996435",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9490fdfe",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "abf00414",
+      "needsInterop": true
+    },
+    "react-compare-slider": {
+      "src": "../../node_modules/react-compare-slider/dist/index.mjs",
+      "file": "react-compare-slider.js",
+      "fileHash": "de34e62b",
+      "needsInterop": false
+    },
+    "react-spinners": {
+      "src": "../../node_modules/react-spinners/esm/index.js",
+      "file": "react-spinners.js",
+      "fileHash": "e6ecf3ea",
+      "needsInterop": false
+    },
+    "rsuite": {
+      "src": "../../node_modules/rsuite/esm/index.js",
+      "file": "rsuite.js",
+      "fileHash": "9415837a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YBFRUR3B": {
+      "file": "chunk-YBFRUR3B.js"
+    },
+    "chunk-JRE55LYH": {
+      "file": "chunk-JRE55LYH.js"
+    }
+  }
+}
