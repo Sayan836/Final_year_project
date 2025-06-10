@@ -26,5 +26,5 @@ def download_esrgan_model():
     return output_file
 
 
-def upscale_video():
-  
+def upscale_video(vid_path):
+  return vid_path

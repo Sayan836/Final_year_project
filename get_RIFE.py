@@ -5,10 +5,10 @@ import py7zr
 def download_rife_model():
     """
     Downloads and extracts the RIFE trained model (v3.6) from Google Drive
-    into /Final_year_project/arXiv2020-RIFE/train_log directory.
+    into /Final_year_project/RIFE/train_log directory.
     """
     # Target directory
-    output_dir = './Final_year_project/arXiv2020-RIFE/train_log'
+    output_dir = './Final_year_project/RIFE/train_log'
     os.makedirs(output_dir, exist_ok=True)
 
     # Google Drive file ID and output ZIP path
@@ -34,7 +34,7 @@ def download_rife_model():
 def interpolate_video(
     video_path,
     output_path=None,
-    model_dir="train_log",
+    model_dir="RIFE/train_log",
     scale=1.0,
     exp=1,
     fps_override=None,
@@ -51,7 +51,7 @@ def interpolate_video(
     import numpy as np
     from tqdm import tqdm
     from torch.nn import functional as F
-    from model.pytorch_msssim import ssim_matlab
+    from RIFE.model.pytorch_msssim import ssim_matlab
     from queue import Queue
     import _thread
     import skvideo.io
@@ -70,18 +70,18 @@ def interpolate_video(
 
     # ========== LOAD MODEL ==========
     try:
-        from model.RIFE_HDv2 import Model
+        from RIFE.model.RIFE_HDv2 import Model
         model = Model()
         model.load_model(model_dir, -1)
         print("Loaded v2.x HD model.")
     except:
         try:
-            from train_log.RIFE_HDv3 import Model
+            from RIFE.train_log.RIFE_HDv3 import Model
             model = Model()
             model.load_model(model_dir, -1)
             print("Loaded v3.x HD model.")
         except:
-            from model.RIFE_HD import Model
+            from RIFE.model.RIFE_HD import Model
             model = Model()
             model.load_model(model_dir, -1)
             print("Loaded v1.x HD model.")
